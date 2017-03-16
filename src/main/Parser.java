@@ -5,12 +5,9 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import javax.annotation.processing.SupportedSourceVersion;
 import java.io.IOException;
-import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Collections;
 
 /**
  * Created by dsm_025 on 2017-03-13.
