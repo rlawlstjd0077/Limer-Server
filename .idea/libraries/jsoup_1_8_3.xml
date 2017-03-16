@@ -3,6 +3,7 @@
     <CLASSES>
       <root url="jar://$USER_HOME$/Downloads/jsoup-1.8.3.jar!/" />
       <root url="jar://$USER_HOME$/Downloads/KoreanAnalyzer-20100302.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../commons-validator-1.6-bin/commons-validator-1.6/commons-validator-1.6.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
