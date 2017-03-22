@@ -7,10 +7,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 
 /**
  * Created by dsm_025 on 2017-03-16.
@@ -23,8 +20,9 @@ public class PageParser {
     private static int timeCount = 0;
     private UrlValidator validator;
     private KoreanAnalyzerHandler handler;
+    private MongoClientManager manager;
 
-    public PageParser(String startUrl, int timeout){
+    public PageParser(String startUrl, int timeout) {
         url = startUrl;
         urlQueue = new LinkedList<>();
         urlQueue.add(url);
@@ -33,16 +31,24 @@ public class PageParser {
         this.timeout = timeout;
         this.validator = new UrlValidator();
         this.handler = new KoreanAnalyzerHandler();
+        manager = MongoClientManager.getInstance();
     }
 
-    public void doParse(){
-        while(timeCount < timeout){
+    public void doParse() {
+        int cnt = 0;
+        while (true) {
+            System.out.println("=============" + cnt + "번 째 파싱 중 ==============");
             try {
-                handler.extractNounAndAdjective(Jsoup.connect(urlQueue.poll()).get().toString());
+                String url = urlQueue.poll();
+                ArrayList<String> list = handler.extractNoun(Jsoup.connect(url).get().toString(), url);
+                System.out.println(url + " 에서 " + list.size() + " 개의 단어 추출됨.");
+
+                manager.putData(list);
+
                 //href String 들 큐에 저장
-                Elements elements = Jsoup.connect(urlQueue.poll()).get().select("a");
-                for(Element element : elements){
-                    if(validator.isValid(element.attr("href"))) {
+                Elements elements = Jsoup.connect(url).get().select("a");
+                for (Element element : elements) {
+                    if (validator.isValid(element.attr("href"))) {
                         urlQueue.add(element.attr("href"));
                     }
                 }
@@ -54,10 +60,10 @@ public class PageParser {
         }
     }
 
-    public static class TimeCountTask extends TimerTask{
+    public static class TimeCountTask extends TimerTask {
         @Override
         public void run() {
-            timeCount ++;
+            timeCount++;
         }
     }
 }

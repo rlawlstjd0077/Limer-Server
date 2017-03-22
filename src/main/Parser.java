@@ -65,13 +65,13 @@ public class Parser {
 //                entireWordList.add(content.attr("title").toString());
 //            }
 //        }
-//        String choice = VowelFinder.toKoJasoAtom(entireWordList.get(100));
+//        String choice = VowelFinder.toKoMoumAtom(entireWordList.get(100));
 //
 //        int count = 0;
 //        String temp;
 //        while(count ++ < entireWordList.size() - 1) {
-//            if (choice.equals(VowelFinder.toKoJasoAtom(entireWordList.get(count)))){
-//                System.out.println("변환 결과 : " + VowelFinder.toKoJasoAtom(entireWordList.get(count)));
+//            if (choice.equals(VowelFinder.toKoMoumAtom(entireWordList.get(count)))){
+//                System.out.println("변환 결과 : " + VowelFinder.toKoMoumAtom(entireWordList.get(count)));
 //                System.out.println("라임 찾기 결과 : " + entireWordList.get(count));
 //            }
 //        }

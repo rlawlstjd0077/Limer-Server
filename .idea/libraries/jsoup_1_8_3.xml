@@ -1,9 +1,10 @@
 <component name="libraryTable">
   <library name="jsoup-1.8.3">
     <CLASSES>
-      <root url="jar://$USER_HOME$/Downloads/jsoup-1.8.3.jar!/" />
-      <root url="jar://$USER_HOME$/Downloads/KoreanAnalyzer-20100302.jar!/" />
       <root url="jar://$PROJECT_DIR$/../../commons-validator-1.6-bin/commons-validator-1.6/commons-validator-1.6.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jar/jsoup-1.10.1.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jar/KoreanAnalyzer-20100302.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../mongo-java-driver-3.4.0.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
