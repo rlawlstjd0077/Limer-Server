@@ -52,6 +52,10 @@ public class TestDriver {
 //        while (cursor.hasNext()) {
 //            list.add(cursor.next().get("name").toString());
 //        }
+//        for(String s : list){
+//            System.out.println(s);
+//        }
+
 //        Scanner scanner = new Scanner(System.in);
 //        String word = scanner.next();
 //        String result = VowelFinder.lastCharJasoAtom(word.charAt(word.length() - 1));
@@ -67,7 +71,8 @@ public class TestDriver {
 //        }
 //        System.out.println("변환 완료");
 
-        PageParser pageParser = new PageParser("https://namu.wiki/w/%EB%82%98%EB%AC%B4%EC%9C%84%ED%82%A4:%EB%8C%80%EB%AC%B8", 10);
+        PageParser pageParser = new PageParser("http://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=102&oid=003&aid=0007844234", 10);
         pageParser.doParse();
     }
+
 }

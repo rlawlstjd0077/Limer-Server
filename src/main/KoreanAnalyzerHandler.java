@@ -66,7 +66,6 @@ public class KoreanAnalyzerHandler {
         } catch (MorphException e) {
             e.printStackTrace();
         }
-
         return null;
     }
 }

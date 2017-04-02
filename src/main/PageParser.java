@@ -5,7 +5,6 @@ import org.apache.lucene.analysis.kr.morph.MorphException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-
 import java.io.IOException;
 import java.util.*;
 
@@ -36,13 +35,14 @@ public class PageParser {
 
     public void doParse() {
         int cnt = 0;
-        while (true) {
-            System.out.println("=============" + cnt + "번 째 파싱 중 ==============");
+            System.out.println("=============" + cnt++ + "번 째 파싱 중 ==============");
             try {
                 String url = urlQueue.poll();
                 ArrayList<String> list = handler.extractNoun(Jsoup.connect(url).get().toString(), url);
                 System.out.println(url + " 에서 " + list.size() + " 개의 단어 추출됨.");
-
+                for(String s : list){
+                    System.out.println(s);
+                }
                 manager.putData(list);
 
                 //href String 들 큐에 저장
@@ -57,7 +57,6 @@ public class PageParser {
             } catch (MorphException e) {
                 e.printStackTrace();
             }
-        }
     }
 
     public static class TimeCountTask extends TimerTask {

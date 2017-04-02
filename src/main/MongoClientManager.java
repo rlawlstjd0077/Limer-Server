@@ -2,6 +2,7 @@ package main;
 
 import com.mongodb.*;
 
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 
 /**
@@ -14,11 +15,16 @@ public class MongoClientManager {
     private DBCollection coll;
 
     private MongoClientManager(){
-        mongoClient = new MongoClient("localhost", 27017);
-        WriteConcern w = new WriteConcern(1, 2000);
-        mongoClient.setWriteConcern(w);
-        db = mongoClient.getDB("words");
-        coll = db.getCollection("words");
+        try {
+            mongoClient = new MongoClient("localhost", 27017);
+            WriteConcern w = new WriteConcern(1, 2000);
+            mongoClient.setWriteConcern(w);
+            db = mongoClient.getDB("words");
+            coll = db.getCollection("words");
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public static MongoClientManager getInstance(){
